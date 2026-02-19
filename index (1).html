@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веломстерская Veloremont</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            color: #2c3e50;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        header {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        nav a:hover {
+            background-color: #e67e22;
+            border-radius: 5px;
+        }
+
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=1350');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            padding-top: 200px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        #services {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #services h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #f5f5f5;
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #e67e22;
+        }
+
+        @media (max-width: 800px) {
+            .services-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #about {
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        #faq {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px 20px;
+            background-color: #f5f5f5;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            padding: 20px;
+            background-color: white;
+        }
+
+        details[open] .faq-answer {
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #contacts {
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .contacts-info {
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        footer hr {
+            max-width: 1200px;
+            margin: 30px auto 20px;
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .copyright {
+            text-align: center;
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        .telegram-link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .telegram-link:hover {
+            text-decoration: underline;
+            color: #e67e22;
+        }
+
+        @media (max-width: 600px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-text">
+                <h1>Veloremont - ремонт велосипедов</h1>
+                <p>Профессиональный ремонт любых велосипедов</p>
+                <a href="#services" class="button">Наши услуги</a>
+            </div>
+        </section>
+
+        <section id="services">
+            <h2>Наши услуги</h2>
+            
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Ремонт велосипедов</h3>
+                    <p>Чиним любые поломки: проколы, тормоза, переключатели скоростей</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Настройка</h3>
+                    <p>Настраиваем переключатели, тормоза и амортизацию</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Обслуживание</h3>
+                    <p>Полное ТО велосипеда перед сезоном</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>О нашей мастерской</h2>
+            <div class="about-text">
+                <p>Мы занимаемся ремонтом велосипедов с 2010 года. За это время мы починили более 5000 велосипедов.</p>
+                <p>У нас работают опытные мастера, которые любят своё дело. Мы используем только качественные запчасти и даем гарантию на все работы.</p>
+                <p>Приезжайте, будем рады помочь!</p>
+            </div>
+        </section>
+
+        <section id="faq">
+            <h2>Частые вопросы</h2>
+            
+            <div class="faq-container">
+                <details>
+                    <summary>Сколько по времени делается ремонт?</summary>
+                    <div class="faq-answer">
+                        <p>Обычный ремонт занимает от 30 минут до 2 часов. Сложный ремонт может занять 1-2 дня.</p>
+                    </div>
+                </details>
+                
+                <details>
+                    <summary>Нужно ли записываться заранее?</summary>
+                    <div class="faq-answer">
+                        <p>Да, лучше позвонить и записаться, чтобы не ждать в очереди.</p>
+                    </div>
+                </details>
+                
+                <details>
+                    <summary>Какие запчасти вы ставите?</summary>
+                    <div class="faq-answer">
+                        <p>Мы используем оригинальные запчасти Shimano, SRAM, а также качественные аналоги.</p>
+                    </div>
+                </details>
+                
+                <details>
+                    <summary>Есть гарантия на работу?</summary>
+                    <div class="faq-answer">
+                        <p>Да, мы даем гарантию на все работы от 1 месяца.</p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <div class="contacts-info">
+                <p><strong>Адрес:</strong> г. Москва, ул. Велосипедная, д. 15</p>
+                <p><strong>Телефон:</strong> +7 (977) 169-80-83</p>
+                <p><strong>Email:</strong> m28648992@gmail.com</p>
+                <p><strong>Часы работы:</strong> Пн-Сб с 10:00 до 20:00</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-left">
+                <h3>Veloremont</h3>
+                <p>ул. Велосипедная, 15</p>
+                <p>+7 (977) 169-80-83</p>
+                <p>m28648992@gmail.com</p>
+            </div>
+            
+            <div class="footer-right">
+                <p>Telegram: <a href="https://t.me/Shkarnikov_Mikhaill" class="telegram-link" target="_blank">@Shkarnikov_Mikhaill</a></p>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <div class="copyright">
+            <p>© 2026 Veloremont. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
